@@ -1,0 +1,60 @@
+{% set name = "xleaflet" %}
+{% set version = "0.0.1" %}
+{% set sha256 = "3dfe6592f57ff59f0a092e74fdcbbce2f3ce8b07e2009d25cc5346e2df1ed4cc" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/QuantStack/xleaflet/archive/{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  skip: true  # [win and py<35]
+  features:   # [win]
+    - vc14    # [win]
+
+requirements:
+  build:
+    - toolchain
+    - cmake
+    - gcc-7             # [linux]
+    - xeus >=0.12.0,<0.13
+    - xtl >=0.4.0,<0.5
+    - xproperty >=0.7.0,<0.8
+    - xwidgets >=0.9.0,<0.10
+    - clangdev          # [osx]
+    - libcxx            # [osx]
+  run:
+    - xeus >=0.12.0,<0.13
+    - cppzmq >=4.2.2,<4.3
+    - xtl >=0.4.0,<0.5
+    - xproperty >=0.7.0,<0.8
+    - xwidgets >=0.9.0,<0.10
+
+test:
+  commands:
+    - test -d ${PREFIX}/include/xleaflet  # [unix]
+    - test -f ${PREFIX}/include/xleaflet/xmap.hpp  # [unix]
+    - test -f ${PREFIX}/lib/cmake/xleaflet/xleafletConfig.cmake  # [unix]
+    - test -f ${PREFIX}/lib/cmake/xleaflet/xleafletConfigVersion.cmake  # [unix]
+    - if exist %LIBRARY_PREFIX%\include\xleaflet\xmap.hpp (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_PREFIX%\lib\xleafletConfig.cmake (exit 0) else (exit 1)  # [win]
+    - if exist %LIBRARY_PREFIX%\lib\xleafletConfigVersion.cmake (exit 0) else (exit 1)  # [win]
+
+about:
+  home: http://quantstack.net/xleaflet
+  license: BSD 3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'C++ backend for the jupyter leaflet widget'
+  doc_url: http://xleaflet.readthedocs.io
+  dev_url: https://github.com/QuantStack/xleaflet
+
+extra:
+  recipe-maintainers:
+    - SylvainCorlay
+    - JohanMabille
