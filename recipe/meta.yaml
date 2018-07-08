@@ -1,6 +1,6 @@
 {% set name = "xleaflet" %}
-{% set version = "0.1.0" %}
-{% set sha256 = "84fe67b73dad0264bd70defc326212facfbcec148b71f9c0d55503241f79283a" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "8d365cdb63c3c2a38b094ef1e8ee94a14ef5318fcfd59fe2ab378bd5bd611fd9" %}
 
 package:
   name: {{ name|lower }}
@@ -22,18 +22,18 @@ requirements:
     - toolchain
     - cmake
     - gcc-7             # [linux]
-    - xeus >=0.12.0,<0.13
+    - xeus >=0.13.0,<0.14
     - xtl >=0.4.0,<0.5
     - xproperty >=0.7.0,<0.8
-    - xwidgets >=0.10.0,<0.11
+    - xwidgets >=0.12.0,<0.13
     - clangdev          # [osx]
     - libcxx            # [osx]
   run:
-    - xeus >=0.12.0,<0.13
+    - xeus >=0.13.0,<0.14
     - cppzmq >=4.2.2,<4.3
     - xtl >=0.4.0,<0.5
     - xproperty >=0.7.0,<0.8
-    - xwidgets >=0.10.0,<0.11
+    - xwidgets >=0.12.0,<0.13
 
 test:
   commands:
