@@ -1,6 +1,6 @@
 {% set name = "xleaflet" %}
-{% set version = "0.2.0" %}
-{% set sha256 = "8d365cdb63c3c2a38b094ef1e8ee94a14ef5318fcfd59fe2ab378bd5bd611fd9" %}
+{% set version = "0.2.1" %}
+{% set sha256 = "a1abfa5615e13f666adf4aa77e069f995098002e6732fad9b875109bec5b9b17" %}
 
 package:
   name: {{ name|lower }}
@@ -25,7 +25,7 @@ requirements:
     - xeus >=0.13.0,<0.14
     - xtl >=0.4.0,<0.5
     - xproperty >=0.7.0,<0.8
-    - xwidgets >=0.12.0,<0.13
+    - xwidgets >=0.12.2,<0.13
     - clangdev          # [osx]
     - libcxx            # [osx]
   run:
@@ -33,7 +33,7 @@ requirements:
     - cppzmq >=4.2.2,<4.3
     - xtl >=0.4.0,<0.5
     - xproperty >=0.7.0,<0.8
-    - xwidgets >=0.12.0,<0.13
+    - xwidgets >=0.12.2,<0.13
 
 test:
   commands:
